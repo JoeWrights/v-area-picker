@@ -1,2 +1,2 @@
 (window.webpackJsonp=window.webpackJsonp||[]).push([[0],{208:function(t,n,e){"use strict";e.r(n),n.default='<template>\n  <div>\n    <button @click="visible = true">test</button>\n    <v-action-sheet v-model="visible" :inner-style="{ height: \'60%\' }" title="选择地址" toolbar-mode="simple" need-bottom-button>\n      <div>sss</div>\n    </v-action-sheet>\n  </div>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      visible: false\n    }\n  }\n}\n<\/script>\n'}}]);
-//# sourceMappingURL=0.build.2d6b89d.js.map
+//# sourceMappingURL=0.build.cf72b97.js.map
