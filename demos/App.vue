@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="nav">
-      <div class="router-path">{{ 'https://joewrights.github.io/v-area-picker/demo.html' }}</div>
+      <div class="router-path">{{ frameSrc }}</div>
     </div>
     <component-page class="demo-container"></component-page>
   </div>
@@ -14,6 +14,14 @@ export default {
   name: 'App',
   components: {
     ComponentPage
+  },
+  computed: {
+    frameSrc () {
+      const origin = process.env.NODE_ENV === 'production'
+        ? 'https://joewrights.github.io/v-area-picker'
+        : 'http://localhost:3333'
+      return `${origin}/demo.html`
+    }
   }
 }
 </script>

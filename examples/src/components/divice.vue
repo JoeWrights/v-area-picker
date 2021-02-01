@@ -25,7 +25,7 @@ export default {
   },
   async mounted () {
     const timer = setTimeout(async () => {
-      const origin = 'http://localhost:3333'
+      const origin = process.env.NODE_ENV === 'production' ? 'https://joewrights.github.io/v-area-picker' : 'http://localhost:3333'
       this.frameSrc = `${origin}/demo.html`
       this.showIframe = true
       clearTimeout(timer)
