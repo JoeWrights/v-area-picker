@@ -17,6 +17,10 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
+        test: /\.styl(us)?$/,
+        use: ['style-loader', 'css-loader', 'stylus-loader']
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']

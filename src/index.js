@@ -1,6 +1,7 @@
+import ActionSheet from './action-sheet.vue'
 import VAreaPicker from './area-picker.vue'
 
-const components = [VAreaPicker]
+const components = [ActionSheet, VAreaPicker]
 
 const install = Vue => {
   components.forEach(c => {
