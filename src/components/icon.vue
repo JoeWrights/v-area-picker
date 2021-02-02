@@ -6,7 +6,7 @@
 
 <script>
 const importAll = context => context.keys().map(context)
-const req = require.context('../src/assets/icons', false, /\.svg$/)
+const req = require.context('../assets/icons/', false, /\.svg$/)
 importAll(req)
 
 export default {

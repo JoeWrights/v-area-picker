@@ -13,7 +13,7 @@
             <div v-else class="confirm">
               <div class="cancel-pla" @click="$emit('cancel'); $emit('input', false)">{{ cancelText }}</div>
               <div class="title">{{ title }}</div>
-              <div class="confirm-pla">{{ confirmText }}</div>
+              <div class="confirm-pla" @click="$emit('confirm')">{{ confirmText }}</div>
             </div>
           </div>
           <div v-else><slot name="toolbar"></slot></div>
@@ -22,10 +22,10 @@
         <div class="content"><slot></slot></div>
 
         <div class="footer">
-            <div v-if="$slots.footer"><slot name="footer"></slot></div>
+          <div v-if="$slots.footer"><slot name="footer"></slot></div>
           <div v-if="!$slots.footer && needBottomButton" class="bottom-button">
             <div v-if="bottomButtonMode !== 'single'" class="cancel-btn" @click="$emit('cancel'); $emit('input', false)">{{ cancelText }}</div>
-            <div class="confirm-btn">{{ confirmText }}</div>
+            <div class="confirm-btn" @click="$emit('confirm')">{{ confirmText }}</div>
           </div>
         </div>
       </div>
@@ -141,6 +141,8 @@ stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
         .confirm
           .title
             margin 0 16px
+    .content
+      padding 0 16px
     .footer
       display flex
       align-items center

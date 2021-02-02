@@ -1,7 +1,8 @@
-import ActionSheet from './action-sheet.vue'
-import VAreaPicker from './area-picker.vue'
+import Tabs from './components/tabs.vue'
+import ActionSheet from './components/action-sheet.vue'
+import VAreaPicker from './components/area-picker.vue'
 
-const components = [ActionSheet, VAreaPicker]
+const components = [Tabs, ActionSheet, VAreaPicker]
 
 const install = Vue => {
   components.forEach(c => {
