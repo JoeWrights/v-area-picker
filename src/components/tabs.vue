@@ -1,20 +1,20 @@
 <template>
-  <div :class="{'tabs-content': currOptions.length === 1}">
+  <div class="tabs-wrapper">
     <div class="tabs flex">
       <div
         :ref="`tabItem${i}`"
-        class="item flex-center f-29 text-500"
+        class="item"
         :class="tabItemClass(item)"
         v-for="(item, i) in currOptions"
         :key="i"
         @click="onTabSelect(item)">
         <div>{{ item.label }}</div>
-        <div v-if="i === 0" :ref="`tabLine${item.value}`" class="tab-line" :style="tabLineStyle"></div>
       </div>
+      <div :ref="`tabLine`" class="tab-line" :style="tabLineStyle"></div>
     </div>
     <keep-alive>
       <transition :name="transitionName">
-        <div v-for="({ slot }, idx) in activeTabs" :key="idx" class="bg-f" :class="{'tabs-content': currOptions.length > 1}">
+        <div v-for="({ slot }, idx) in activeTabs" :key="idx" class="tabs-content">
           <slot :name="slot"></slot>
         </div>
       </transition>
@@ -32,7 +32,16 @@ export default {
     options: {
       type: Array,
       default: () => []
-    }
+    },
+    lineColor: {
+      type: String,
+      default: '#f00'
+    },
+    lineHeight: {
+      type: Number,
+      default: 2
+    },
+    lineWidth: Number
   },
   data () {
     return {
@@ -40,7 +49,7 @@ export default {
       currOptions: [],
       transitionName: '',
       tabLineStyle: {},
-      firstChildLeft: null
+      direction: 'backward'
     }
   },
   computed: {
@@ -58,6 +67,9 @@ export default {
     },
     activeTabs () {
       return this.currOptions.filter((item) => item.value === this.currValue)
+    },
+    curIndex () {
+      return this.currOptions.findIndex(({ value }) => value === this.value)
     }
   },
   watch: {
@@ -65,14 +77,16 @@ export default {
       this.initOptions()
     },
     value: {
-      async handler (value, oldVal) {
+      async handler (value) {
         this.currValue = value
         this.initOptions()
-        this.transitionName = value > oldVal ? 'slide-left' : 'slide-right'
         await this.$nextTick()
-        this.setTabItemLine()
+        await this.setTabItemLine()
       },
       immediate: true
+    },
+    curIndex (val, oldVal) {
+      this.transitionName = val > oldVal ? 'slide-left' : 'slide-right'
     }
   },
   mounted () {
@@ -99,25 +113,20 @@ export default {
       this.$emit('input', this.currValue)
     },
     async setTabItemLine () {
-      const idx = this.currOptions.findIndex(({ value }) => value === this.value)
-      const doms = this.$refs[`tabItem${idx}`]
+      const index = this.currOptions.findIndex(({ value }) => value === this.value)
+      const doms = this.$refs[`tabItem${index}`]
       const dom = doms && doms[0]
-      const firstChildDom = this.$refs.tabItem0
-      if (dom && firstChildDom) {
-        this.firstChildLeft = this.firstChildLeft === null ? firstChildDom[0].offsetLeft : this.firstChildLeft
-        const { width, left } = this.getDomPosition(dom)
-        this.tabLineStyle = {
-          width: typeof width === 'string' ? width : `${width}px`,
-          transform: `translateX(${left - this.firstChildLeft}px)`
-        }
-        return false
-      }
+      this.tabLineStyle = this.getDomPosition(dom)
     },
     getDomPosition (dom) {
       if (!dom) return {}
+      const left = dom.offsetLeft + dom.offsetWidth / 2
+      const { lineColor, lineHeight, lineWidth } = this
       return {
-        width: dom.getBoundingClientRect().width,
-        left: dom.offsetLeft
+        height: `${lineHeight}px`,
+        width: `${lineWidth || dom.getBoundingClientRect().width}px`,
+        transform: `translateX(${left}px) translateX(-50%)`,
+        background: lineColor
       }
     }
   }
@@ -125,8 +134,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../assets/styles/common.styl'
+
+.tabs-wrapper
+  height 100%
+  overflow scroll
 .tabs
+  position relative
   display flex
+  background-color #fff
   .item
     position relative
     display flex
@@ -135,13 +151,16 @@ export default {
     font-size 14px
     & + .item
       margin-left 10px
-    .tab-line
-      height 2px
-      margin-top 2px
-      background blue
-      transition all 0.3s
+  .tab-line
+    position absolute
+    height 2px
+    left 0
+    bottom -5px
+    transition all 0.3s
 .tabs-content
   margin-top 10px
+  height 100%
+  overflow scroll
 .active
   color blue
 .disabled

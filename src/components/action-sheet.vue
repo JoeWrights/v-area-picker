@@ -2,7 +2,7 @@
   <div class="v-action-sheet">
     <transition name="slide-top">
       <div v-if="visible" class="sheet-wrapper" :style="innerStyle">
-        <div class="toolbar">
+        <div class="toolbar" :class="{ 'border-b': needToolbarBorder }">
           <div v-if="!$slots.toolbar" class="default-bar">
             <div v-if="toolbarMode === 'simple'" class="simple">
               <div class="title">{{ title }}</div>
@@ -80,6 +80,10 @@ export default {
     innerStyle: {
       type: [Object, Array],
       default: () => ({})
+    },
+    needToolbarBorder: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -96,6 +100,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '../assets/styles/common.styl'
 stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
 
 .v-action-sheet
@@ -111,9 +116,11 @@ stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
     right 0
     bottom 0
     z-index 999
-    border-radius 8px
+    border-radius 8px 8px 0 0
     background-color #fff
     .toolbar
+      &.border-b
+        border1px-bottom(#ccc)
       .default-bar
         padding 0 16px
         font-size 14px
@@ -142,7 +149,9 @@ stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
           .title
             margin 0 16px
     .content
-      padding 0 16px
+      flex 1
+      padding 10px 16px 16px
+      overflow scroll
     .footer
       display flex
       align-items center

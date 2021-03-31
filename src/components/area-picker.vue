@@ -1,5 +1,5 @@
 <template>
-  <action-sheet v-model="visible" v-bind="$attrs" v-on="$listeners">
+  <action-sheet v-model="visible" :title="title" v-bind="$attrs" v-on="$listeners">
     <picker></picker>
   </action-sheet>
 </template>
@@ -14,7 +14,13 @@ export default {
     Picker,
     ActionSheet
   },
-  value: Boolean,
+  props: {
+    value: Boolean,
+    title: {
+      type: String,
+      default: '选择地址'
+    }
+  },
   computed: {
     visible: {
       get () {

@@ -1,6 +1,6 @@
 {
   "name": "v-area-picker",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "vue移动端地址选择组件",
   "main": "dist/v-area-picker.js",
   "scripts": {
@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.13",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.13",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "autoprefixer": "^9.6.1",
