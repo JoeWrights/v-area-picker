@@ -1,7 +1,7 @@
 <template>
   <div class="v-action-sheet">
     <transition name="slide-top">
-      <div v-if="visible" class="sheet-wrapper" :style="innerStyle">
+      <div v-show="visible" class="sheet-wrapper" :style="innerStyle">
         <div class="toolbar" :class="{ 'border-b': needToolbarBorder }">
           <div v-if="!$slots.toolbar" class="default-bar">
             <div v-if="toolbarMode === 'simple'" class="simple">
@@ -13,7 +13,7 @@
             <div v-else class="confirm">
               <div class="cancel-pla" @click="$emit('cancel'); $emit('input', false)">{{ cancelText }}</div>
               <div class="title">{{ title }}</div>
-              <div class="confirm-pla" @click="$emit('confirm')">{{ confirmText }}</div>
+              <div class="confirm-pla" :class="{ 'disabled': disabledConfirm }" @click="!disabledConfirm && $emit('confirm')">{{ confirmText }}</div>
             </div>
           </div>
           <div v-else><slot name="toolbar"></slot></div>
@@ -25,7 +25,7 @@
           <div v-if="$slots.footer"><slot name="footer"></slot></div>
           <div v-if="!$slots.footer && needBottomButton" class="bottom-button">
             <div v-if="bottomButtonMode !== 'single'" class="cancel-btn" @click="$emit('cancel'); $emit('input', false)">{{ cancelText }}</div>
-            <div class="confirm-btn" @click="$emit('confirm')">{{ confirmText }}</div>
+            <div class="confirm-btn" :class="{ 'disabled': disabledConfirm }" @click="!disabledConfirm && $emit('confirm')">{{ confirmText }}</div>
           </div>
         </div>
       </div>
@@ -84,6 +84,10 @@ export default {
     needToolbarBorder: {
       type: Boolean,
       default: true
+    },
+    disabledConfirm: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -139,6 +143,8 @@ stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
             color #333
         .confirm-pla
           color #576b95
+          &.disabled
+            color #969799
         .simple
         .confirm
           display flex
@@ -183,6 +189,8 @@ stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
           height 48px
           border-radius 8px
           background-color: #f00fff;
+          &.disabled
+            background-color #969799
         .cancel-btn + .confirm-btn
           margin-left 10px
   .mask

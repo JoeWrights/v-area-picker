@@ -10,7 +10,7 @@
         @click="onTabSelect(item)">
         <div>{{ item.label }}</div>
       </div>
-      <div :ref="`tabLine`" class="tab-line" :style="tabLineStyle"></div>
+      <div :ref="`tabLine`" class="tab-line" :class="{ animated }" :style="tabLineStyle"></div>
     </div>
     <keep-alive>
       <transition :name="transitionName">
@@ -35,21 +35,24 @@ export default {
     },
     lineColor: {
       type: String,
-      default: '#f00'
+      default: '#2B6BFF'
     },
     lineHeight: {
       type: Number,
       default: 2
     },
-    lineWidth: Number
+    lineWidth: Number,
+    animated: {
+      type: Boolean,
+      default: true
+    }
   },
   data () {
     return {
       currValue: this.value,
       currOptions: [],
       transitionName: '',
-      tabLineStyle: {},
-      direction: 'backward'
+      tabLineStyle: {}
     }
   },
   computed: {
@@ -138,7 +141,7 @@ export default {
 
 .tabs-wrapper
   height 100%
-  overflow scroll
+  overflow hidden
 .tabs
   position relative
   display flex
@@ -156,13 +159,16 @@ export default {
     height 2px
     left 0
     bottom -5px
-    transition all 0.3s
+    &.animated
+      transition all 0.3s
 .tabs-content
   margin-top 10px
   height 100%
   overflow scroll
 .active
-  color blue
+  color #2B6BFF
 .disabled
   cursor not-allowed
+.c-9
+  color #999
 </style>

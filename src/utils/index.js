@@ -42,3 +42,18 @@ export const getCountyListByCity = cityCode => {
     }
   })
 }
+
+export const getCountyByCode = countyCode => {
+  const name = getAreaData('county')[countyCode]
+  return { name, code: countyCode }
+}
+
+export const getCityByCountyCode = countyCode => {
+  const code = Object.keys(getAreaData('city')).find(code => code.slice(0, 4) === `${countyCode}`.slice(0, 4))
+  return { code, name: getAreaData('city')[code] }
+}
+
+export const getProvinceByCityCode = cityCode => {
+  const code = Object.keys(getAreaData('province')).find(code => code.slice(0, 2) === `${cityCode}`.slice(0, 2))
+  return { code, name: getAreaData('province')[code] }
+}

@@ -8,7 +8,7 @@
         <div slot="area">333</div>
       </v-tabs>
     </v-action-sheet> -->
-    <v-area-picker v-model="visible" :inner-style="{ height: '60%' }"></v-area-picker>
+    <v-area-picker v-model="visible" :inner-style="{ height: '60%' }" :last-code="360732" @confirm-picker="handleConfirm"></v-area-picker>
   </div>
 </template>
 
@@ -22,7 +22,14 @@ export default {
         { label: '请选择', value: 'aa', slot: 'province' },
         { label: '请选择', value: 'bb', slot: 'city' },
         { label: '请选择', value: 'cc', slot: 'area' }
-      ]
+      ],
+      selectedVal: []
+    }
+  },
+  methods: {
+    handleConfirm (data) {
+      this.selectedVal = data
+      this.visible = false
     }
   }
 }
