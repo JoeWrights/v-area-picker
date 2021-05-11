@@ -32,7 +32,7 @@
     </transition>
 
     <transition name="fade">
-      <div v-if="visible" class="mask" @touchmove.prevent.stop @click="$emit('input', false)"></div>
+      <div v-if="visible" class="mask" @touchmove.prevent.stop @click="$emit('click-overlay'); $emit('input', false)"></div>
     </transition>
   </div>
 </template>

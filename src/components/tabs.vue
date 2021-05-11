@@ -76,8 +76,14 @@ export default {
     }
   },
   watch: {
-    options () {
-      this.initOptions()
+    options: {
+      handler (options) {
+        console.log('------------------------------------')
+        console.log(options)
+        console.log('------------------------------------')
+        this.initOptions()
+      },
+      deep: true
     },
     value: {
       async handler (value) {
@@ -100,6 +106,9 @@ export default {
       const values = this.currOptions.map(({ value }) => value)
       const hasRepeatVal = values.length !== new Set(values).size
       if (hasRepeatVal) throw new Error('tab的value值必须唯一')
+      console.log('------------------------------------')
+      console.log('aaa')
+      console.log('------------------------------------')
       this.currOptions = this.options.map(item => {
         return {
           ...item,
@@ -114,6 +123,9 @@ export default {
       item.active = true
       this.currValue = item.value
       this.$emit('input', this.currValue)
+      if (item.value !== this.value) {
+        this.$emit('change', this.currValue)
+      }
     },
     async setTabItemLine () {
       const index = this.currOptions.findIndex(({ value }) => value === this.value)

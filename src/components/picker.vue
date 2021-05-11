@@ -1,6 +1,6 @@
 <template>
   <div class="area-picker">
-    <tabs v-model="activeTab" :options="tabs">
+    <tabs ref="tabs" v-model="activeTab" :options="tabs" @change="handleChangeTab">
       <div v-for="tab in tabs" :key="tab.slot" :slot="tab.slot">
         <div class="area-picker-column">
           <div class="area-picker-column__item" v-for="item in columnList" :key="item.code" @click="handleSelectColumn(tab, item)">
@@ -40,7 +40,8 @@ export default {
       type: Array,
       default: () => []
     },
-    lastCode: [String, Number]
+    lastCode: [String, Number],
+    visible: Boolean
   },
   data () {
     return {
@@ -64,7 +65,7 @@ export default {
     isActive () {
       return ({ code }) => {
         const curTabIdx = this.tabs.findIndex(({ value }) => value === this.activeTab)
-        return `${this.selectedVal[curTabIdx]?.code}` === code
+        return `${this.selectedVal[curTabIdx]?.code}` === `${code}`
       }
     }
   },
@@ -75,6 +76,14 @@ export default {
     lastCode: {
       handler: 'matchAreaByLastCode',
       immediate: true
+    },
+    visible: {
+      async handler (bool) {
+        if (bool) {
+          await this.$nextTick()
+          this.$refs.tabs.setTabItemLine()
+        }
+      }
     }
   },
   methods: {
@@ -120,7 +129,22 @@ export default {
       }
       this.$emit('update:selected', this.selectedVal)
     },
-    matchAreaByLastCode () {
+    handleChangeTab (val) {
+      const idx = this.tabs.findIndex(({ value }) => value === val)
+      const areaDataListMap = {
+        0: this.provinceList,
+        1: this.cityList,
+        2: this.countyList
+      }
+      const curColumnList = areaDataListMap[idx]
+
+      if (this.selectedVal[idx] && this.selectedVal[idx]?.code) {
+        const selectedIdx = curColumnList.findIndex(({ code }) => code === this.selectedVal[idx]?.code)
+        curColumnList.splice(selectedIdx, 1)
+        curColumnList.unshift(this.selectedVal[idx])
+      }
+    },
+    async matchAreaByLastCode () {
       if (!this.lastCode) return
 
       const curCounty = getCountyByCode(this.lastCode)
@@ -130,15 +154,27 @@ export default {
       this.cityList = getCityListByProvince(curProvince.code)
       this.countyList = getCountyListByCity(curCity.code)
       this.selectedVal = [curProvince, curCity, curCounty]
-      this.selectedVal.forEach((item, i) => {
-        this.tabs[i] = {
+
+      this.tabs = this.selectedVal.map((item, i) => {
+        return {
           label: item.name,
           value: areaMap[i],
           slot: areaMap[i],
           index: i
         }
       })
+      const idx = this.countyList.findIndex(({ code }) => `${code}` === `${this.selectedVal[2]?.code}`)
+      this.countyList.splice(idx, 1)
+      this.countyList.unshift(this.selectedVal[2])
       this.activeTab = areaMap[this.selectedVal.length - 1]
+      this.$emit('update:selected', [
+        curProvince,
+        curCity,
+        curCounty
+      ])
+    },
+    async resetData () {
+      await this.matchAreaByLastCode()
     }
   }
 }

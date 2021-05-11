@@ -17,11 +17,13 @@
     "@babel/plugin-proposal-optional-chaining": "^7.12.13",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
+    "address": "^1.1.2",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "cross-env": "^5.2.0",
     "css-loader": "^3.1.0",
+    "error-overlay-webpack-plugin": "^0.4.1",
     "eslint": "^6.2.1",
     "eslint-config-standard": "^14.0.1",
     "eslint-friendly-formatter": "^4.0.1",
@@ -55,7 +57,8 @@
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "webpackbar": "^4.0.0"
   },
   "keywords": [
     "vue",
@@ -73,5 +76,8 @@
   "bugs": {
     "url": "https://github.com/JoeWrights/v-area-picker/issues"
   },
-  "homepage": "https://github.com/JoeWrights/v-area-picker"
+  "homepage": "https://github.com/JoeWrights/v-area-picker",
+  "dependencies": {
+    "friendly-errors-webpack-plugin": "^1.7.0"
+  }
 }

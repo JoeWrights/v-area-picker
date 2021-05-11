@@ -19,7 +19,7 @@ export default {
     frameSrc () {
       const origin = process.env.NODE_ENV === 'production'
         ? 'https://joewrights.github.io/v-area-picker'
-        : 'http://localhost:3333'
+        : 'http://127.0.0.1:3333'
       return `${origin}/demo.html`
     }
   }

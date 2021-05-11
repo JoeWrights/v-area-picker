@@ -1,7 +1,12 @@
 const webpackCommon = require('./webpack.common.js')
+const webpack = require('webpack')
+const Webpackbar = require('webpackbar')
 const { merge } = require('webpack-merge')
 const { pathResolve, genePath, isProduction } = require('./utils.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorPlugin = require('friendly-errors-webpack-plugin')
+
+const host = '127.0.0.1'
 
 const currentConfig = {
   mode: 'development',
@@ -25,11 +30,23 @@ const currentConfig = {
         removeStyleLinkTypeAttributes: isProduction,
         useShortDoctype: isProduction
       }
-    })
+    }),
+    new FriendlyErrorPlugin({
+      compilationSuccessInfo: {
+        messages: [`You application is running here http://${host}:3333`]
+      },
+      clearConsole: false,
+      additionalFormatters: [],
+      additionalTransformers: []
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new Webpackbar()
   ],
   devServer: {
     historyApiFallback: true,
     disableHostCheck: true,
+    host,
     port: 3333
   },
   performance: {

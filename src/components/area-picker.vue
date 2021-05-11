@@ -1,6 +1,6 @@
 <template>
-  <action-sheet v-model="visible" :title="title" v-bind="areaPickerAttrs" v-on="areaPickerListeners" @confirm="handleConfirmPicker">
-    <picker :selected.sync="selectedVal" :lastCode="lastCode" @finish="onFinished">
+  <action-sheet v-model="visible" :title="title" v-bind="areaPickerAttrs" v-on="areaPickerListeners" @confirm="handleConfirmPicker" @cancel="handleCancelPicker" @click-overlay="handleClickOverlay">
+    <picker ref="picker" :selected.sync="selectedVal" :visible="visible" :lastCode="lastCode" @finish="onFinished">
       <template v-if="$slots.selectedIcon" #selectedIcon>
         <slot name="selectedIcon"></slot>
       </template>
@@ -52,7 +52,9 @@ export default {
     areaPickerListeners () {
       return {
         ...this.$listeners,
-        'confirm-picker': this.handleConfirmPicker
+        'confirm-picker': this.handleConfirmPicker,
+        'cancel-picker': this.handleCancelPicker,
+        'click-overlay': this.handleClickOverlay
       }
     }
   },
@@ -67,6 +69,20 @@ export default {
     },
     handleConfirmPicker () {
       this.$emit('confirm-picker', this.selectedVal)
+    },
+    handleCancelPicker () {
+      const bool = `${this.selectedVal[this.selectedVal.length - 1]?.code}` === `${this.lastCode}`
+      if (!bool) {
+        this.$refs.picker.resetData()
+      }
+      this.$emit('cancel-picker')
+    },
+    handleClickOverlay () {
+      const bool = `${this.selectedVal[this.selectedVal.length - 1]?.code}` === `${this.lastCode}`
+      if (!bool) {
+        this.$refs.picker.resetData()
+      }
+      this.$emit('click-overlay')
     }
   }
 }
