@@ -11,7 +11,7 @@ const currentConfig = {
   output: {
     path: pathResolve('../dist'), // 打包后的文件存放在dist文件夹
     publicPath: '../dist/', // 设置公共路径
-    filename: 'v-text-ellipsis.js', // 打包后输出文件
+    filename: 'v-area-picker.js', // 打包后输出文件
     libraryTarget: 'umd'
   },
   optimization: {
