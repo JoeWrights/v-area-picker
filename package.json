@@ -4,7 +4,7 @@
   "description": "vue移动端地址选择组件",
   "main": "dist/v-area-picker.js",
   "scripts": {
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --mode production --config scripts/webpack.prod.js",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack --mode production --config scripts/webpack.prod.js && webpack --config scripts/webpack.components.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress --config scripts/webpack.example.js",
     "devp": "cross-env NODE_ENV=production webpack-dev-server --inline --hot --progress --config scripts/webpack.example.js",
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress --config scripts/webpack.demo.js",

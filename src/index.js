@@ -1,6 +1,10 @@
-import Tabs from './components/tabs.vue'
-import ActionSheet from './components/action-sheet.vue'
-import VAreaPicker from './components/area-picker.vue'
+// import Tabs from './components/tabs.vue'
+// import ActionSheet from './components/action-sheet.vue'
+// import VAreaPicker from './components/area-picker.vue'
+
+import Tabs from '@/components/tabs/index.js'
+import ActionSheet from '@/components/action-sheet/index.js'
+import VAreaPicker from '@/components/area-picker/index.js'
 
 const components = [Tabs, ActionSheet, VAreaPicker]
 

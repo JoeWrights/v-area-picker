@@ -1,0 +1,5 @@
+{
+  "v-picker": "./src/components/picker/index.js",
+  "v-action-sheet": "./src/components/action-sheet/index.js",
+  "v-tabs": "./src/components/tabs/index.js"
+}
