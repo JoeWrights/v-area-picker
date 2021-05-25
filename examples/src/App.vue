@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <main-title component-name="v-text-ellipsis" desc="vue文本溢出省略组件"></main-title>
+    <main-title component-name="v-area-picker" desc="vue移动端地址选择器"></main-title>
     <component-page></component-page>
   </div>
 </template>

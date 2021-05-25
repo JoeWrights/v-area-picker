@@ -26,6 +26,7 @@ export default {
   &>.content{
     padding: 10px 0;
     overflow: auto;
+    width: calc(100vw - 500px);
   }
 }
 </style>

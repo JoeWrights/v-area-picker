@@ -6,7 +6,7 @@
         <template slot="title">简单用法</template>
         <template slot="content">
           <demo-code>
-            <demo1 slot="demo"></demo1>
+            <!-- <demo1 slot="demo"></demo1> -->
             <code-reader slot="code" file="demo1.vue"></code-reader>
           </demo-code>
 
@@ -47,7 +47,7 @@ import DemoCode from './demo-code.vue'
 import MdReader from './md-reader.vue'
 import CodeReader from './code-reader.vue'
 import Device from './divice.vue'
-import Demo1 from '../demos/demo1.vue'
+// import Demo1 from '../demos/demo1.vue'
 // import Demo2 from '../demos/demo2.vue'
 // import Demo3 from '../demos/demo3.vue'
 // import Demo4 from '../demos/demo4.vue'
@@ -56,7 +56,7 @@ import Demo1 from '../demos/demo1.vue'
 export default {
   name: 'ComponentPage',
   components: {
-    Demo1,
+    // Demo1,
     // Demo2,
     // Demo3,
     // Demo4,
@@ -93,7 +93,7 @@ export default {
     color: #5e6d82;
   }
   .view-device {
-    margin: 20px 100px 0 100px;
+    margin: 20px 50px 0 100px;
   }
 }
 
