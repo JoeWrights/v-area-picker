@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{236:function(e,r,n){"use strict";n.r(r),r.default="// 引入全部组件\nimport Vue from 'vue'\nimport VAreaPicker from 'v-area-picker'\n\nVue.use(VAreaPicker)\n"}}]);
+//# sourceMappingURL=12.build.0128b50.js.map

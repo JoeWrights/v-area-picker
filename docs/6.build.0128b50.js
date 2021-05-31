@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{230:function(e,n,t){"use strict";t.r(n),n.default='<template>\n  <v-picker :selected.sync="selectedVal" :lastCode="lastCode"></v-picker>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      selectedVal: [],\n      lastCode: \'\'\n    }\n  }\n}\n<\/script>\n'}}]);
+//# sourceMappingURL=6.build.0128b50.js.map
