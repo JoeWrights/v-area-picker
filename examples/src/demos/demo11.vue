@@ -9,7 +9,7 @@ export default {
   data () {
     return {
       visible: false,
-      lastCode: ''
+      lastCode: 310109
     }
   },
   methods: {

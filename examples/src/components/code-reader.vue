@@ -56,5 +56,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+/deep/ {
+  .CodeMirror {
+    height: auto;
+    padding: 10px 10px;
+  }
+}
 </style>

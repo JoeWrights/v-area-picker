@@ -1,5 +1,5 @@
 <template>
-  <v-tabs v-model="activeTab" :options="tabs">
+  <v-tabs v-model="activeTab" :options="tabs" @change="handleChange">
     <div slot="province">111</div>
     <div slot="city">222</div>
     <div slot="area">333</div>
@@ -16,6 +16,11 @@ export default {
         { label: '市', value: 2, slot: 'city' },
         { label: '区', value: 3, slot: 'area' }
       ]
+    }
+  },
+  methods: {
+    handleChange (val) {
+      console.log(val)
     }
   }
 }

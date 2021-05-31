@@ -52,4 +52,6 @@ export default {
 .demo-container
   position relative
   top 40px
+  height 600px
+  overflow scroll
 </style>
