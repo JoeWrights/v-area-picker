@@ -1,1 +1,1 @@
-npm install v-area-picker --dev
+npm install v-area-picker --save

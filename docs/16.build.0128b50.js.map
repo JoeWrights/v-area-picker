@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./examples/src/demos/installation/npm2.sh"],"names":[],"mappings":"2FAAA,OAAe","file":"16.build.0128b50.js","sourcesContent":["export default \"npm install babel-plugin-import --dev\";"],"sourceRoot":""}

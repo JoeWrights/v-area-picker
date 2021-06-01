@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{232:function(n,e,t){"use strict";t.r(e),e.default='<template>\n  <v-action-sheet\n    v-model="visible"\n    :inner-style="{ height: \'60%\' }"\n    @confirm="handleConfirm"\n    @cancel="handleCancel">\n  </v-action-sheet>\n</template>\n\n<script>\nexport default {\n  data () {\n    return {\n      visible: false\n    }\n  },\n  methods: {\n    handleConfirm () {\n      // do something\n    },\n    handleCancel () {\n      // do something\n    }\n  }\n}\n<\/script>\n'}}]);
+//# sourceMappingURL=8.build.5a42924.js.map

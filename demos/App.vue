@@ -52,6 +52,6 @@ export default {
 .demo-container
   position relative
   top 40px
-  height 600px
+  height calc(100vh - 40px)
   overflow scroll
 </style>

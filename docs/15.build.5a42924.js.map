@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./examples/src/demos/installation/npm.sh"],"names":[],"mappings":"2FAAA,OAAe","file":"15.build.5a42924.js","sourcesContent":["export default \"npm install v-area-picker --save\";"],"sourceRoot":""}
