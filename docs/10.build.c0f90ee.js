@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{234:function(n,e,a){"use strict";a.r(e),e.default="module.exports = {\n  plugins: [\n    [\n      'import',\n      {\n        libraryName: 'v-area-picker',\n        customName: name => {\n          return `v-area-picker/dist/${name}`\n        }\n      },\n      'v-area-picker'\n    ]\n  ]\n}\n"}}]);
+//# sourceMappingURL=10.build.c0f90ee.js.map

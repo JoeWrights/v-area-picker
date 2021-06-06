@@ -30,6 +30,17 @@
             </md-reader>
           </sub-title>
         </div>
+        <div>
+          <sub-title title="4. AreaPicker Events">
+            <md-reader>
+              参数 | 说明 | 回调参数 | |
+              --- | --- | --- | --- |
+              confirm-picker | 点击确认的事件 | 选择的地址 `[{ name: '北京市', code: 110000 }, ...]` | |
+              cancel-picker | 点击取消的事件 | - | |
+              click-overlay | 点击遮罩的事件 | - | |
+            </md-reader>
+          </sub-title>
+        </div>
       </template>
     </doc-section>
     <doc-section>
@@ -49,6 +60,29 @@
             <md-reader>可以在 tabs 上绑定 `change` 事件，事件传参为当前tab激活的value。</md-reader>
           </sub-title>
           <code-reader readOnly type="javascript" file="demo22.vue"></code-reader>
+        </div>
+        <div>
+          <sub-title title="3. Tabs Props">
+            <md-reader>
+              参数 | 说明 | 类型 | 默认值 | |
+              --- | --- | --- | --- | ---- |
+              v-model | 绑定当前选中标签的标识符 | _string_ \| number | - | |
+              options | tabs选择项 | array | `[]` | |
+              line-color | 底部条的背景色 | _string_ | `#2B6BFF` |  |
+              line-height | 底部条高度， 默认`px` | number | `2` |  |
+              line-width | 底部条宽度， 默认`px` | number | `跟随标签的长度` |  |
+              animated | 是否开启切换标签内容时的转场动画 | boolean | `true` |  |
+            </md-reader>
+          </sub-title>
+        </div>
+        <div>
+          <sub-title title="4. Tabs Events">
+            <md-reader>
+              参数 | 说明 | 回调参数 | |
+              --- | --- | --- | --- |
+              change | 当前激活的标签改变时触发 | 当前激活的标签值 | |
+            </md-reader>
+          </sub-title>
         </div>
       </template>
     </doc-section>
@@ -70,6 +104,26 @@
             <md-reader>可以绑定 `finish` 事件做一些其他的逻辑</md-reader>
           </sub-title>
           <code-reader readOnly type="javascript" file="demo33.vue"></code-reader>
+        </div>
+        <div>
+          <sub-title title="3. Picker Props">
+            <md-reader>
+              参数 | 说明 | 类型 | 默认值 | |
+              --- | --- | --- | --- | ---- |
+              selected | 绑定当前选中的地址 | array | [] | |
+              last-code | 选中的地址最后一项的code | _string_ \| number | - | |
+            </md-reader>
+          </sub-title>
+        </div>
+        <div>
+          <sub-title title="4. Picker Events">
+            <md-reader>
+              参数 | 说明 | 回调参数 | |
+              --- | --- | --- | --- |
+              column-change | 选择省\|市\|区的事件 | 当前选择的省\|市\|区 | |
+              finish | 选择完成的事件 | - | |
+            </md-reader>
+          </sub-title>
         </div>
       </template>
     </doc-section>

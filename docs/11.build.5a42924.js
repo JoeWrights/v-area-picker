@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{235:function(e,n,i){"use strict";i.r(n),n.default="// 按需加载 Tabs, Picker, ActionSheet组件\nimport Vue from 'vue'\nimport { VTabs, VPicker, VActionSheet } from 'v-area-picker'\n\nVue.use(VTabs)\nVue.use(VPicker)\nVue.use(VActionSheet)\n"}}]);
-//# sourceMappingURL=11.build.5a42924.js.map
