@@ -8,8 +8,8 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress --config scripts/webpack.example.js",
     "devp": "cross-env NODE_ENV=production webpack-dev-server --inline --hot --progress --config scripts/webpack.example.js",
     "dev:demo": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress --config scripts/webpack.demo.js",
-    "build:demo": "rimraf docs && cross-env NODE_ENV=production webpack --progress --hide-modules --config scripts/webpack.demo.js",
-    "build:docs": "rimraf docs && npm run build:demo && cross-env NODE_ENV=production webpack --progress --hide-modules --config scripts/webpack.example.js"
+    "build:demo": "rimraf docs && cross-env NODE_ENV=production webpack --mode production --progress --hide-modules --config scripts/webpack.demo.js",
+    "build:docs": "rimraf docs && npm run build:demo && cross-env NODE_ENV=production webpack --mode production --progress --hide-modules --config scripts/webpack.example.js"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
