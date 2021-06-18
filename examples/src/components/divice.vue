@@ -1,7 +1,7 @@
 <template>
   <div class="device-container" ref="container">
-    <div class="screen">
-      <iframe ref="examples" id="exampleFrame" name="example" v-if="showIframe" width="100%" height="100%" :src="frameSrc" frameborder="0"></iframe>
+    <div class="screen" :class="{ 'fixed': isFixed }">
+      <iframe ref="examples" id="exampleFrame" class="frame" name="example" v-if="showIframe" width="100%" height="100%" :src="frameSrc" frameborder="0"></iframe>
     </div>
   </div>
 </template>
@@ -12,7 +12,13 @@ export default {
   data () {
     return {
       showIframe: false,
-      frameSrc: ''
+      frameSrc: '',
+      scrollTop: window.scrollY
+    }
+  },
+  computed: {
+    isFixed () {
+      return this.scrollTop > 238
     }
   },
   watch: {
@@ -30,6 +36,10 @@ export default {
       this.showIframe = true
       clearTimeout(timer)
     }, 1000)
+
+    window.addEventListener('scroll', () => {
+      this.scrollTop = window.scrollY
+    })
   },
   methods: {
     // jumpByRouter (path) {
@@ -54,6 +64,16 @@ export default {
   .screen {
     height: 640px;
     pointer-events: auto !important;
+    &.fixed {
+      position: fixed;
+      width: 360px;
+      top: 30px;
+      box-shadow: #ebedf0 0 4px 12px;
+      border-radius: 12px;
+    }
+    .frame {
+      border-radius: 12px;
+    }
   }
 }
 </style>
