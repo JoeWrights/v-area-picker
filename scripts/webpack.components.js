@@ -6,6 +6,7 @@ const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 const Components = require('../components.json')
 
 const currentConfig = {
+  mode: 'production',
   entry: Components,
   output: {
     path: pathResolve('../dist'), // 打包后的文件存放在dist文件夹
