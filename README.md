@@ -23,7 +23,7 @@ $ yarn add v-area-picker
   Vue.use(VAreaPicker)
   ```
 
-### 按需引用
+### 按需引入
 1、 安装babel-plugin-import
 
   ```bash
