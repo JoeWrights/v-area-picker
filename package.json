@@ -1,6 +1,6 @@
 {
   "name": "v-area-picker",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "vue移动端地址选择组件",
   "main": "dist/v-area-picker.js",
   "scripts": {
