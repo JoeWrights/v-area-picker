@@ -188,7 +188,8 @@ stand-animation-enter = cubic-bezier(0.40,0.00,0.20,1.00)
           align-items center
           height 48px
           border-radius 8px
-          background-color: #f00fff;
+          background-color #2B6BFF
+          color #fff
           &.disabled
             background-color #969799
         .cancel-btn + .confirm-btn

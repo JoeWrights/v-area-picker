@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const Webpackbar = require('webpackbar')
 const { merge } = require('webpack-merge')
 const { pathResolve, genePath, isProduction } = require('./utils.js')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorPlugin = require('friendly-errors-webpack-plugin')
 
@@ -53,6 +55,35 @@ const currentConfig = {
     hints: false
   },
   devtool: '#eval-source-map'
+}
+
+if (isProduction) {
+  currentConfig.mode = 'production'
+  currentConfig.devtool = '#source-map'
+  currentConfig.plugins = (currentConfig.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:7].css'
+    })
+  ])
+  module.optimization = {
+    minimizer: [
+      new UglifyjsWebpackPlugin({
+        parallel: true,
+        sourceMap: false,
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ],
+    noEmitOnErrors: true
+  }
 }
 
 module.exports = merge(webpackCommon, currentConfig)

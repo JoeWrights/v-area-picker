@@ -1,0 +1,1 @@
+npm install v-area-picker --save

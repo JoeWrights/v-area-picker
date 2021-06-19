@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .md-reader{
   code, mark {
     margin: 0 4px;
@@ -73,6 +73,13 @@ export default {
   }
   a{
     color: #3890ff;
+  }
+  thead th {
+    text-align: left;
+  }
+  td {
+    max-width: 250px;
+    padding-right: 10px;
   }
 }
 </style>
